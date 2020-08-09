@@ -85,7 +85,7 @@
             
 
             <%post.replies.forEach(reply=>{ %>
-                <p><%=reply%>></p>
+                <p><%=reply%></p>
             <% }); %>
             <%if(loggedIn){%>
             <form action="/posts/review/<%=post.id%>" method="post">

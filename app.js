@@ -23,7 +23,7 @@ const app = express();
 
 //set up mongoidb
 
-mongoose.connect("mongodb://localhost:27017/loginPage", {
+mongoose.connect("mongodb+srv://admin-shivaram:"+process.env.PASS+"@cluster0.oao5z.mongodb.net/loginPage?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // passport config
 
 app.use(session({
-  secret: process.env.secret,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
 
