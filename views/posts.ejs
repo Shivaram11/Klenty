@@ -34,10 +34,18 @@
 
 <body>
     <% if(loggedIn){%>
-    <div class="button-contain">
-        <a href="/posts/new"><button class="btn btn-outline-danger">Create Post</button></a>
+    <div class="button-contain" >
+        <a href="/posts/new"><button class="btn btn-outline-danger" style="margin-right:5px">Create Post</button></a>
+        <a href="/logout"><button class="btn btn-outline-success" style="margin-right:5px">Logout</button></a>
     </div >
-    <%}%>
+
+    <%}else{%>
+    <div class="button-contain">
+    
+        <a href="/login"><button class="btn btn-outline-success">Login</button></a>
+        <%}%>
+    </div>
+
 <div class="contain">
     <% posts.forEach(function(post) { %>
         <div class="post">

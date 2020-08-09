@@ -42,6 +42,10 @@ module.exports={
     showRegister(req,res,next){
       res.render("register",{message:""});
 
+    },
+    logoutUser(req,res,next){
+        req.logout();
+        res.redirect("/posts");
     }
 
 
