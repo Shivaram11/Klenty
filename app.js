@@ -10,7 +10,10 @@ const ejs=require("ejs");
 const passportLocalMongoose= require("passport-local-mongoose");
 const mongoose=require("mongoose");
 const User = require("./models/user");
-
+ 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 
 const indexRouter = require('./routes/index');

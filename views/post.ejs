@@ -29,37 +29,75 @@
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="stylesheets/poststyle.css" rel="stylesheet">
+    <!-- <link href="stylesheets/poststyle.css" rel="stylesheet"> -->
+    <style>
+        .post{
+        width:90%;
+        background-color: #f4f6ff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        /* align-items: center; */
+        margin-top: 20px;
+
+        }
+        .post h2{
+        text-transform: uppercase;
+        border-bottom: 2px solid black;
+        padding: 4px;
+        }
+        .post p{
+        text-transform: capitalize;
+        padding: 4px;
+        font-size: 1.2rem;
+        }
+        .contain {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        }
+
+        input{
+        width: 85%;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: black;
+        border: 2px solid black;
+        padding: 8px;
+        }
+       
+    </style>
 </head>
 
 <body>
-    <% if(loggedIn){%>
-    <div class="button-contain">
-        <a href="/posts/new"><button class="btn btn-outline-danger">Create Post</button></a>
-    </div >
-    <%}%>
-<div class="contain">
-    <% posts.forEach(function(post) { %>
+    
+
+    <div class="contain">
         <div class="post">
             <h2><%=post.title %></h2>
             <p><%=post.description%></p>
-            <!-- <h3>Replies</h3> -->
-            <a href="/posts/<%=post.id%>">
-            <button class="btn btn-outline-dark">View more</button>
-            </a>
+            <h3>Replies</h3>
             
-            <!-- <%post.replies.forEach(reply=>{ %>
+
+            <%post.replies.forEach(reply=>{ %>
                 <p><%=reply%>></p>
             <% }); %>
-            <form action="" method="post">
-                <input type="text" placeholder="write a reply">
+            <%if(loggedIn){%>
+            <form action="/posts/review/<%=post.id%>" method="post">
+                <input type="text" name="reply" placeholder="write a reply">
                 <button type="submit" class="btn btn-dark">Done</button>
-            </form> -->
+            </form>
+            <%}%>
         </div>
-    
-    <%});%>
-</div>
 
-    
+    </div>
+
+
 </body>
+
 </html>

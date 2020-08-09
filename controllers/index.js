@@ -7,24 +7,17 @@ module.exports={
         User.register({username:req.body.username},req.body.password,(err,user)=>{
             if(err){
                 console.log(err);
-                res.redirect("/register")
+                res.render("register",{message:"ALready registered"})
             }else{
                 passport.authenticate("local")(req,res,()=>{
-                    res.redirect("/forum");
+                    res.redirect("/posts");
                 })
                 
             }
 
         })
     },
-    viewForum(req,res,next){
-        if(req.isAuthenticated()){
-            res.send("welcome to the forum ");
-        }else{
-            res.redirect("/");
-        }
-        
-    },
+    
     loginUser(req,res,next){
         const user = new User({
             username:req.body.username,
@@ -33,20 +26,24 @@ module.exports={
         req.login(user,(err)=>{
             if(err){
                 console.log(err);
-                res.redirect("/");
+                res.redirect("/login");
             }else{
                 passport.authenticate("local")(req,res,()=>{
-                    res.redirect("/forum"); 
+                    res.redirect("/posts"); 
                 });
             }
         })
 
     },
     showLogin(req,res,next){
-        res.render("login");
+        res.render("login",{message:""});
+
+    },
+    showRegister(req,res,next){
+      res.render("register",{message:""});
 
     }
 
 
 
-}
+};
